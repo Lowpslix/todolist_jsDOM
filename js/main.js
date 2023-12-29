@@ -38,7 +38,7 @@ const initApp = () => {
 };
 
 const loadListObject = () => {
-  const storedList = localStorage.getItem("myTodoList");
+  const storedList = localStorage.getItem("myToDoList");
   if (typeof storedList !== "string") return;
   const parsedList = JSON.parse(storedList);
   parsedList.forEach((itemObj) => {
@@ -95,7 +95,7 @@ const addClickListenerToCheckbox = (checkbox) => {
   checkbox.addEventListener("click", (event) => {
     toDoList.removeItemFromList(checkbox.id);
     updatePersistentData(toDoList.getList());
-    const removedText = getLabelText(check.id);
+    const removedText = getLabelText(checkbox.id);
     updateScreenReaderConfirmation(removedText, "removed from list");
     setTimeout(() => {
       refreshThePage();
